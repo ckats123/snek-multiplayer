@@ -10,37 +10,24 @@ const setupInput = (conn) => {
   stdin.on("data", handleUserInput);
   return stdin;
 };
-/*
-const handleUserInput = function () {
-  // your code here
-  connect.on("data", (data) => {
-    console.log("Server says: ", data);
-  });
-};
-*/
+
 const handleUserInput = function (key) {
+  // your code here
   if (key === "P") {
     connection.write("Say: Hello, everyone!");
   } else if (key === "\u0003") {
     // this line is to handle ctrl+c inputs to terminate the program
     process.exit();
+  } else if (key === "w") {
+    connection.write("Move: up");
+  } else if (key === "a") {
+    connection.write("Move: left");
+  } else if (key === "s") {
+    connection.write("Move: down");
+  } else if (key === "d") {
+    connection.write("Move: right");
   }
-
-  if (key === "w") {
-    console.log("up");
-  }
-
-  if (key === "a") {
-    console.log("left");
-  }
-
-  if (key === "s") {
-    console.log("down");
-  }
-
-  if (key === "d") {
-    console.log("right");
-  }
+  return key;
 };
 
 module.exports = { setupInput };
