@@ -1,6 +1,8 @@
-// setup interface to handle user input from stdin
+let connection;
 
-const setupInput = function () {
+// setup interface to handle user input from stdin
+const setupInput = (conn) => {
+  connection = conn;
   const stdin = process.stdin;
   stdin.setRawMode(true);
   stdin.setEncoding("utf8");
@@ -15,5 +17,29 @@ const handleUserInput = function () {
     console.log("Server says: ", data);
   });
 };
+/*
+const handleUserInput = function (key) {
+  if (key === "\u0003") {
+    // this line is to handle ctrl+c inputs to terminate the program
+    process.exit();
+  }
+
+  if (key === "w") {
+    console.log("up");
+  }
+
+  if (key === "a") {
+    console.log("left");
+  }
+
+  if (key === "s") {
+    console.log("down");
+  }
+
+  if (key === "d") {
+    console.log("right");
+  }
+};
+*/
 
 module.exports = { setupInput };
