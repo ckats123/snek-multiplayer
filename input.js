@@ -10,16 +10,18 @@ const setupInput = (conn) => {
   stdin.on("data", handleUserInput);
   return stdin;
 };
-
+/*
 const handleUserInput = function () {
   // your code here
   connect.on("data", (data) => {
     console.log("Server says: ", data);
   });
 };
-/*
+*/
 const handleUserInput = function (key) {
-  if (key === "\u0003") {
+  if (key === "P") {
+    connection.write("Say: Hello, everyone!");
+  } else if (key === "\u0003") {
     // this line is to handle ctrl+c inputs to terminate the program
     process.exit();
   }
@@ -40,6 +42,5 @@ const handleUserInput = function (key) {
     console.log("right");
   }
 };
-*/
 
 module.exports = { setupInput };
